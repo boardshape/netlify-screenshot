@@ -38,12 +38,12 @@ exports.handler = async (event, context) => {
   })
 
   const page = await browser.newPage()
+  
+  await page.setUserAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36");
 
   await page.setViewport({ width, height })
 
   await page.goto(url, { waitUntil: "networkidle2" })
-  
-  await page.evaluateHandle('document.fonts.ready');
 
   const screenshot = await page.screenshot()
 
